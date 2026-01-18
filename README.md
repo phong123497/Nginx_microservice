@@ -239,3 +239,27 @@ GET http://localhost:8080/api/orders
 - Đảm bảo đã cài đủ dependencies: `pip install -r requirements.txt`
 - Chạy từ đúng thư mục service (user-service hoặc order-service)
 
+---
+
+## 🚀 Phase 2: Nâng cấp với DB Riêng + Service Communication + Load Balancing
+
+Đây là **Phase 1** với shared database. Để nâng cấp lên **Phase 2** với:
+
+- ✅ Database riêng biệt cho mỗi service (`user_db`, `order_db`)
+- ✅ Service-to-service communication (Order Service gọi User Service qua HTTP)
+- ✅ Nginx Load Balancing (nhiều instances của User Service)
+- ✅ Rate Limiting (10 requests/second)
+
+Xem hướng dẫn chi tiết tại: **[README_PHASE2.md](README_PHASE2.md)**
+
+### Quick Start Phase 2
+
+1. Tạo databases: `mysql -u root -p < database_schema_phase2.sql`
+2. Cập nhật database configs (đã được update sẵn)
+3. Cài dependencies: `pip install -r requirements.txt` (order-service)
+4. Chạy 2 instances User Service (port 8001, 8003)
+5. Chạy Order Service (port 8002)
+6. Cấu hình Nginx với load balancing (đã update trong `nginx/nginx.conf`)
+
+Chi tiết đầy đủ xem [README_PHASE2.md](README_PHASE2.md)
+

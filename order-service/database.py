@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 # MySQL connection string
 # Update with your MySQL credentials
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:12345@localhost:3306/order_service"
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:12345@localhost:3306/order_db"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
